@@ -1,0 +1,20 @@
+{
+  "author": "wondible",
+  "build": "76557",
+  "category": ["chat"],
+  "context": "client",
+  "date": "2014/12/25",
+  "description": "Offer help on server mods via a chat bot",
+  "display_name": "Server Mod Help Chat",
+  "forum": null,
+  "identifier": "com.wondible.pa.server_mod_help_chat",
+  "priority": 100,
+  "scenes": {
+    "new_game": [
+      "coui://ui/mods/server_mod_help_chat/new_game.js"
+    ]
+  },
+  "signature": "not yet implemented",
+  "version": "0.1.0"
+}
+
