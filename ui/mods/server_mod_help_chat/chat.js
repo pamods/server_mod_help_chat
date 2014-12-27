@@ -16,7 +16,7 @@ define(function() {
       if (this.commands[payload.message]) {
         this.commands[payload.message].call(this, payload)
       } else if (payload.message[0] == '!') {
-        this.say("Sorry, I don't know " + payload.message + "  Type !commands for ticks I do know.")
+        this.say("Sorry, I don't know " + payload.message + "  Type !commands for tricks I do know.")
       } else if (payload.message[0] == '?') {
         topic = payload.message.substr(1)
         if (this.topics()[topic]) {
