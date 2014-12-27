@@ -1,10 +1,7 @@
 define(function() {
-  var help = ko.observable({})
-  var topics = ko.computed(function() {
-    return Object.keys(help())
-  })
+  var topics = ko.observable({})
   var addTopics = function(t) {
-    help(_.extend(help(), t))
+    topics(_.extend(topics(), t))
   }
   var specs = ko.observable({})
   var addSpec = function(identifier, s) {
@@ -48,7 +45,7 @@ define(function() {
     mods.forEach(loadModHelp)
   }
 
-  api.mods.getMountedMods('client', mounted)
+  //api.mods.getMountedMods('client', mounted)
   api.mods.getMountedMods('server', mounted)
 
   if (handlers.mount_mod_file_data) {
@@ -61,7 +58,6 @@ define(function() {
 
   return {
     specs: specs,
-    help: help,
     topics: topics,
   }
 })

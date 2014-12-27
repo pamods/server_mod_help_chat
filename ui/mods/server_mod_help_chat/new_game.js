@@ -10,23 +10,30 @@ require([
   'server_mod_help_chat/info',
   'server_mod_help_chat/chat'
 ], function(info, Bot) {
-  var print = function(data) {console.log(data)}
-  //info.specs.subscribe(print)
-  //info.help.subscribe(print)
-  //info.topics.subscribe(print)
-  var bot = new Bot(info.help)
+  var bot = new Bot(info.topics)
 
   if (handlers.event_message) {
     var base_event_message = handlers.event_message
     handlers.event_message = function(payload) {
       base_event_message.apply(this, arguments)
-      if (payload.message == ' joined the lobby' && payload.target) {
-        bot.greet(payload.target)
-      }
+      bot.hear(payload)
     }
   }
 
-  setTimeout(function() {
-    handlers.event_message({message: ' joined the lobby', target: 'somebody'})
-  }, 1000)
+  if (handlers.chat_message) {
+    var base_chat_message = handlers.chat_message
+    handlers.chat_message = function(payload) {
+      base_chat_message.apply(this, arguments)
+      bot.hear(payload)
+    }
+  }
+
+  //var print = function(data) {console.log(data)}
+  //info.specs.subscribe(print)
+  //info.help.subscribe(print)
+  //info.topics.subscribe(print)
+
+  //setTimeout(function() {
+    //handlers.event_message({message: ' joined the lobby', target: 'somebody'})
+  //}, 1000)
 })
