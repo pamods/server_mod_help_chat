@@ -11,24 +11,12 @@ require([
   'server_mod_help_chat/chat'
 ], function(info, Bot) {
   var bot = new Bot(info.topics)
-  bot.commands[' joined the lobby'] = function(payload) {
-    if (payload.target) {
-      this.greet(payload.target)
-    }
-  }
-
-  if (handlers.event_message) {
-    var base_event_message = handlers.event_message
-    handlers.event_message = function(payload) {
-      base_event_message.apply(this, arguments)
-      bot.hear(payload)
-    }
-  }
 
   if (handlers.chat_message) {
     var base_chat_message = handlers.chat_message
     handlers.chat_message = function(payload) {
       base_chat_message.apply(this, arguments)
+      console.log(payload)
       bot.hear(payload)
     }
   }
@@ -37,8 +25,4 @@ require([
   //info.specs.subscribe(print)
   //info.help.subscribe(print)
   //info.topics.subscribe(print)
-
-  //setTimeout(function() {
-    //handlers.event_message({message: ' joined the lobby', target: 'somebody'})
-  //}, 1000)
 })

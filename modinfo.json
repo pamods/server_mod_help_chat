@@ -12,6 +12,9 @@
   "scenes": {
     "new_game": [
       "coui://ui/mods/server_mod_help_chat/new_game.js"
+    ],
+    "live_game_chat": [
+      "coui://ui/mods/server_mod_help_chat/live_game_chat.js"
     ]
   },
   "signature": "not yet implemented",

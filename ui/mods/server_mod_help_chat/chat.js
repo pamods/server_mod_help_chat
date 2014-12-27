@@ -6,7 +6,12 @@ define(function() {
   Bot.prototype = {
     constructor: Bot,
     say: function(message) {
-      model.send_message("chat_message", {message: "> " + message})
+      var msg = {message: "> " + message}
+      if (model.teamChat && model.teamChat()) {
+        model.send_message("team_chat_message", msg)
+      } else {
+        model.send_message("chat_message", msg)
+      }
     },
     greet: function(player) {
       this.say("Hello " + player + ".  Type !topics for server mod help.")
@@ -27,11 +32,6 @@ define(function() {
       }
     },
     commands: {
-      ' joined the lobby': function(payload) {
-        if (payload.target) {
-          this.greet(payload.target)
-        }
-      },
       '!commands': function(payload) {
         topics = Object.keys(this.commands).join(', ')
         this.say("commands are: " + topics)
