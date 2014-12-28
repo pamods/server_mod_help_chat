@@ -1,9 +1,9 @@
 {
   "author": "wondible",
   "build": "76557",
-  "category": ["chat"],
+  "category": ["chat", "mod-help"],
   "context": "client",
-  "date": "2014/12/25",
+  "date": "2014/12/27",
   "description": "Offer help on server mods via a chat bot",
   "display_name": "Server Mod Help Chat",
   "forum": null,
