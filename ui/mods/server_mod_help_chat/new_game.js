@@ -11,9 +11,12 @@ require([
   'server_mod_help_chat/chat'
 ], function(info, Bot) {
   var bot = new Bot(info.topics)
-  bot.commands[' joined the lobby'] = function(payload) {
+  bot.commands[' joined the lobby.'] = function(payload) {
+    var my = this
     if (payload.target) {
-      this.greet(payload.target)
+      setTimeout(function() {
+        my.say("Hello " + payload.target + ".  Type !topics for server mod help.")
+      }, 1000)
     }
   }
 

@@ -13,9 +13,6 @@ define(function() {
         model.send_message("chat_message", msg)
       }
     },
-    greet: function(player) {
-      this.say("Hello " + player + ".  Type !topics for server mod help.")
-    },
     hear: function(payload) {
       //console.log(payload)
       if (this.commands[payload.message]) {
