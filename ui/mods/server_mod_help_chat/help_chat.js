@@ -17,6 +17,11 @@ define(['server_mod_help_chat/chat'], function(Bot) {
     }
   }
 
+  var topicCount = function() {
+    return Object.keys(this.topics()).length
+  }
+
+  Bot.prototype.topicCount = topicCount
   Bot.prototype.commands['!topics'] = listTopics
   Bot.prototype.listeners.push(hearTopic)
 

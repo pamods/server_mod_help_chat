@@ -14,7 +14,7 @@ require([
   bot.topics = info.topics
   bot.commands[' joined the lobby.'] = function(payload) {
     var my = this
-    if (payload.target) {
+    if (payload.target && my.topicCount() > 0) {
       setTimeout(function() {
         my.say("Hello " + payload.target + ".  Type !topics for server mod help.")
       }, 1000)
