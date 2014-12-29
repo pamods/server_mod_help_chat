@@ -36,7 +36,20 @@ define(function() {
     },
     listeners: [knownCommand, unknownCommand],
     lookup: function(object, key) {
-      return object[key]
+      if (object[key]) {
+        return object[key]
+      }
+
+      var candidates = Object.keys(object).filter(function(c) {
+        return c.startsWith(key)
+      })
+      if (candidates.length == 1) {
+        return object[candidates[0]]
+      } else if (candidates.length > 1) {
+        this.say(key + ' has multiple matches: ' + candidates.join(', '))
+      }
+
+      return undefined
     },
     commands: {
       '!commands': function(payload) {

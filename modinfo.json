@@ -3,10 +3,10 @@
   "build": "76557",
   "category": ["chat", "mod-help"],
   "context": "client",
-  "date": "2014/12/27",
+  "date": "2014/12/28",
   "description": "Offer help on server mods via a chat bot",
   "display_name": "Server Mod Help Chat",
-  "forum": null,
+  "forum": "https://forums.uberent.com/threads/wip-server-mod-help-chat.66822/",
   "identifier": "com.wondible.pa.server_mod_help_chat",
   "priority": 100,
   "scenes": {
@@ -18,6 +18,6 @@
     ]
   },
   "signature": "not yet implemented",
-  "version": "0.1.0"
+  "version": "0.2.0"
 }
 
