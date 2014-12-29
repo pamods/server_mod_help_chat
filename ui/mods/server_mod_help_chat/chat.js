@@ -1,6 +1,18 @@
 define(function() {
-  var Bot = function(topics) {
-    this.topics = topics
+  var Bot = function() {}
+
+  var knownCommand = function(payload) {
+    if (this.commands[payload.message]) {
+      this.commands[payload.message].call(this, payload)
+      return true
+    }
+  }
+
+  var unknownCommand = function(payload) {
+    if (payload.message[0] == '!') {
+      this.say("Sorry, I don't know " + payload.message + "  Type !commands for tricks I do know.")
+      return true
+    }
   }
 
   Bot.prototype = {
@@ -15,28 +27,18 @@ define(function() {
     },
     hear: function(payload) {
       //console.log(payload)
-      if (this.commands[payload.message]) {
-        this.commands[payload.message].call(this, payload)
-      } else if (payload.message[0] == '!') {
-        this.say("Sorry, I don't know " + payload.message + "  Type !commands for tricks I do know.")
-      } else if (payload.message[0] == '?') {
-        topic = payload.message.substr(1)
-        if (this.topics()[topic]) {
-          this.say(this.topics()[topic])
-        } else {
-          this.say("Sorry, I don't know about " + payload.message)
+      for (var i = 0;i < this.listeners.length;i++) {
+        if (this.listeners[i].call(this, payload)) {
+          return
         }
       }
     },
+    listeners: [knownCommand, unknownCommand],
     commands: {
       '!commands': function(payload) {
         topics = Object.keys(this.commands).join(', ')
         this.say("commands are: " + topics)
       },
-      '!topics': function(payload) {
-        topics = Object.keys(this.topics()).map(function(t) { return '?' + t }).join(', ')
-        this.say("topics are: " + topics)
-      }
     },
   }
 

@@ -8,9 +8,10 @@ console.log('help chat');
 
 require([
   'server_mod_help_chat/info',
-  'server_mod_help_chat/chat'
+  'server_mod_help_chat/help_chat'
 ], function(info, Bot) {
-  var bot = new Bot(info.topics)
+  var bot = new Bot()
+  bot.topics = info.topics
   bot.commands[' joined the lobby.'] = function(payload) {
     var my = this
     if (payload.target) {
