@@ -6,12 +6,14 @@ define(['server_mod_help_chat/chat'], function(Bot) {
 
   var hearTopic = function(payload) {
     if (payload.message[0] == '?') {
-      topic = payload.message.substr(1)
-      if (this.topics()[topic]) {
-        this.say(this.topics()[topic])
+      var topic = payload.message.substr(1)
+      var text = this.lookup(this.topics(), topic)
+      if (text) {
+        this.say(text)
       } else {
         this.say("Sorry, I don't know about " + payload.message)
       }
+      return true
     }
   }
 

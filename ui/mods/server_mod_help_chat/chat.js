@@ -2,8 +2,9 @@ define(function() {
   var Bot = function() {}
 
   var knownCommand = function(payload) {
-    if (this.commands[payload.message]) {
-      this.commands[payload.message].call(this, payload)
+    var command = this.lookup(this.commands, payload.message)
+    if (command) {
+      command.call(this, payload)
       return true
     }
   }
@@ -34,6 +35,9 @@ define(function() {
       }
     },
     listeners: [knownCommand, unknownCommand],
+    lookup: function(object, key) {
+      return object[key]
+    },
     commands: {
       '!commands': function(payload) {
         topics = Object.keys(this.commands).join(', ')
