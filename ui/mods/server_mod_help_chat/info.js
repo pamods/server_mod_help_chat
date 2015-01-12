@@ -11,42 +11,55 @@ define(function() {
     specs()[identifier] = s
     specs(specs())
   }
+  var defaultTopic = function(mod) {
+    var article = {}
+    article[mod.display_name] = mod.description
+    return article
+  }
 
-  var record = function(identifier) {
+  var record = function(mod, notFound) {
     return function(data) {
       //console.log(data)
       try {
         var ext = JSON.parse(data)
         if (ext) {
-          addSpec(identifier, ext)
+          addSpec(mod.identifier, ext)
           if (ext.topics) {
             addTopics(ext.topics)
           } else {
             console.log('no help topics found in', this.url)
+            notFound()
           }
         } else {
-          console.log('did not parse', this.url)
+          console.warn('did not parse', this.url)
+          notFound()
         }
       } catch(e) {
-        console.log('json parsing error in file', this.url, e.message)
+        console.error('json parsing error in file', this.url, e.message)
+        notFound()
       }
     }
   }
-  var failure = function() {
-    //console.log('no help found for', this.url)
+  var failure = function(notFound) {
+    return function() {
+      //console.log('no help found for', this.url)
+      notFound()
+    }
   }
   var loadModHelp = function(mod) {
     var url = 'coui://'+mod.identifier+'/mod_help.json'
+    var notFound = function() {addTopics(defaultTopic(mod))}
     $.ajax({
       url: url,
-      success: record(mod.identifier),
-      error: failure
+      success: record(mod, notFound),
+      error: failure(notFound)
     });
     var url0 = 'coui://'+mod.identifier+'/server_mod_help.json'
+    var na = function() {}
     $.ajax({
       url: url,
-      success: record(mod.identifier),
-      error: failure
+      success: record(mod, na),
+      error: failure(na)
     });
   }
 
