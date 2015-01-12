@@ -1,3 +1,7 @@
+## 0.3.0
+
+- Interim version supports both mod_help.json and server_mod_help.json. server_mod_help will be removed in next version
+
 ## 0.2.0
 
 - Fix greeting players.

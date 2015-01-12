@@ -33,7 +33,13 @@ define(function() {
     //console.log('no help found for', this.url)
   }
   var loadModHelp = function(mod) {
-    var url = 'coui://'+mod.identifier+'/server_mod_help.json'
+    var url = 'coui://'+mod.identifier+'/mod_help.json'
+    $.ajax({
+      url: url,
+      success: record(mod.identifier),
+      error: failure
+    });
+    var url0 = 'coui://'+mod.identifier+'/server_mod_help.json'
     $.ajax({
       url: url,
       success: record(mod.identifier),
