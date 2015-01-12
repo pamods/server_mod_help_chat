@@ -3,6 +3,7 @@
 - Interim version supports both mod_help.json and server_mod_help.json. server_mod_help will be removed in next version
 - Matching is case-insensitive
 - If a mod provides no topics, a default is provided with the mod description
+- More general substring matching
 
 ## 0.2.0
 

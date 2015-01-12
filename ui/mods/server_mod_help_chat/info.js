@@ -57,7 +57,7 @@ define(function() {
     var url0 = 'coui://'+mod.identifier+'/server_mod_help.json'
     var na = function() {}
     $.ajax({
-      url: url,
+      url: url0,
       success: record(mod, na),
       error: failure(na)
     });

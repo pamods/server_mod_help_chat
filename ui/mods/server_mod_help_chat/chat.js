@@ -48,6 +48,18 @@ define(function() {
         return object[candidates[0]]
       } else if (candidates.length > 1) {
         this.say(key + ' has multiple matches: ' + candidates.join(', '))
+        return undefined
+      }
+
+      var rkey = new RegExp(key.replace(/[\?\.\*]/g, ''))
+      var candidates = Object.keys(object).filter(function(c) {
+        return c.match(rkey)
+      })
+      if (candidates.length == 1) {
+        return object[candidates[0]]
+      } else if (candidates.length > 1) {
+        this.say(key + ' has multiple matches: ' + candidates.join(', '))
+        return undefined
       }
 
       return undefined
