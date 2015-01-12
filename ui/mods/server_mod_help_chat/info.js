@@ -1,7 +1,10 @@
 define(function() {
   var topics = ko.observable({})
   var addTopics = function(t) {
-    topics(_.extend(topics(), t))
+    for (var k in t) {
+      topics()[k.toLowerCase()] = t[k]
+    }
+    topics(topics())
   }
   var specs = ko.observable({})
   var addSpec = function(identifier, s) {

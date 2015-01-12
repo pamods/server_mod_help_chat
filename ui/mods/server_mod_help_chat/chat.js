@@ -36,6 +36,7 @@ define(function() {
     },
     listeners: [knownCommand, unknownCommand],
     lookup: function(object, key) {
+      key = key.toLowerCase()
       if (object[key]) {
         return object[key]
       }
