@@ -6,6 +6,10 @@ define(function() {
     }
     topics(topics())
   }
+  var announcements = ko.observableArray([])
+  var addAnnouncement = function(a) {
+    announcements.push(a)
+  }
   var specs = ko.observable({})
   var addSpec = function(identifier, s) {
     specs()[identifier] = s
@@ -22,20 +26,24 @@ define(function() {
       //console.log(data)
       try {
         var ext = JSON.parse(data)
-        if (ext) {
-          addSpec(mod.identifier, ext)
-          if (ext.topics) {
-            addTopics(ext.topics)
-          } else {
-            console.log('no help topics found in', this.url)
-            notFound()
-          }
-        } else {
-          console.warn('did not parse', this.url)
-          notFound()
-        }
       } catch(e) {
         console.error('json parsing error in file', this.url, e.message)
+        notFound()
+        return
+      }
+      if (ext) {
+        addSpec(mod.identifier, ext)
+        if (ext.topics) {
+          addTopics(ext.topics)
+        } else {
+          console.log('no help topics found in', this.url)
+          notFound()
+        }
+        if (ext.announcement) {
+          addAnnouncement(ext.announcement)
+        }
+      } else {
+        console.warn('did not parse', this.url)
         notFound()
       }
     }
@@ -79,6 +87,7 @@ define(function() {
   }
 
   return {
+    announcements: announcements,
     specs: specs,
     topics: topics,
   }

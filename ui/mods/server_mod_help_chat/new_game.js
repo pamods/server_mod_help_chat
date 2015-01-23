@@ -17,7 +17,8 @@ require([
     if (payload.target && my.topicCount() > 0) {
       setTimeout(function() {
         my.say("Hello " + payload.target + ".  Type !topics for server mod help.")
-      }, 1000)
+        info.announcements().forEach(function(ann) {my.say(ann)})
+      }, 4000)
     }
   }
 

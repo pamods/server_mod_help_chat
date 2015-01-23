@@ -1,3 +1,7 @@
+## 0.4.0
+
+- Chat announcements on player entry.
+
 ## 0.3.0
 
 - Interim version supports both mod_help.json and server_mod_help.json. server_mod_help will be removed in next version
