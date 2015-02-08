@@ -1,4 +1,4 @@
-require([
+define([
   'server_mod_help_chat/info',
   'server_mod_help_chat/help_chat'
 ], function(info, Bot) {

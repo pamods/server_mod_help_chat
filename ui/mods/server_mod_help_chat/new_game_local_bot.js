@@ -1,10 +1,11 @@
-require([
+define([
   'server_mod_help_chat/chat'
 ], function(Bot) {
   var bot = new Bot()
   bot.commands = {
     '/commands': bot.commands['!commands'],
   }
+  bot.prefix = '/'
 
   bot.say = function(message) {
     model.chatMessages.push({

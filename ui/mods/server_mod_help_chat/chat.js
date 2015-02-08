@@ -1,6 +1,10 @@
 define(function() {
   var Bot = function() {}
 
+  var enabledFilter = function(payload) {
+    return !this.enabled
+  }
+
   var knownCommand = function(payload) {
     var command = this.lookup(this.commands, payload.message)
     if (command) {
@@ -10,7 +14,7 @@ define(function() {
   }
 
   var unknownCommand = function(payload) {
-    if (payload.message[0] == '!') {
+    if (payload.message[0] == this.prefix) {
       this.say("Sorry, I don't know " + payload.message + "  Type !commands for tricks I do know.")
       return true
     }
@@ -30,7 +34,9 @@ define(function() {
         }
       }
     },
-    listeners: [knownCommand, unknownCommand],
+    prefix: '!',
+    enabled: true,
+    listeners: [enabledFilter, knownCommand, unknownCommand],
     lookup: function(object, key) {
       key = key.toLowerCase()
       if (object[key]) {
