@@ -13,6 +13,11 @@ require([
   var bot = new Bot()
   bot.topics = info.topics
 
+  bot.say = function(message) {
+    var msg = {message: "> " + message}
+    model.send_message("chat_message", msg)
+  }
+
   if (handlers.chat_message) {
     var base_chat_message = handlers.chat_message
     handlers.chat_message = function(payload) {

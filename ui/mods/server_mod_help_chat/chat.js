@@ -20,11 +20,7 @@ define(function() {
     constructor: Bot,
     say: function(message) {
       var msg = {message: "> " + message}
-      if (model.teamChat && model.teamChat()) {
-        model.send_message("team_chat_message", msg)
-      } else {
-        model.send_message("chat_message", msg)
-      }
+      model.send_message("chat_message", msg)
     },
     hear: function(payload) {
       //console.log(payload)

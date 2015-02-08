@@ -1,3 +1,8 @@
+## 1.1.0
+
+- Removed some cases where the bot accidentally spoke
+- Extracted post to chat from core chat module
+
 ## 1.0.0
 
 - Chat announcements on player entry.

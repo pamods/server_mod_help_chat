@@ -22,6 +22,11 @@ require([
     }
   }
 
+  bot.say = function(message) {
+    var msg = {message: "> " + message}
+    model.send_message("chat_message", msg)
+  }
+
   if (handlers.event_message) {
     var base_event_message = handlers.event_message
     handlers.event_message = function(payload) {
