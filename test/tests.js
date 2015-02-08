@@ -58,6 +58,11 @@ require({baseUrl: '../ui/mods'}, [
     bot.hear({message: '!commands'})
     assert.ok(bot.messages[0].match('commands are'))
   });
+  QUnit.test( "/commands", function( assert ) {
+    bot.messages = []
+    bot.hear({message: '/commands'})
+    assert.deepEqual(bot.messages, [])
+  });
   QUnit.test( "topic", function( assert ) {
     bot.messages = []
     bot.hear({message: '?one'})

@@ -26,7 +26,7 @@ define(function() {
       //console.log(payload)
       for (var i = 0;i < this.listeners.length;i++) {
         if (this.listeners[i].call(this, payload)) {
-          return
+          return true
         }
       }
     },
@@ -48,7 +48,7 @@ define(function() {
         return undefined
       }
 
-      var rkey = new RegExp(key.replace(/[^\w\s]/g, ''))
+      var rkey = new RegExp(key.replace(/[^\w\s!\/]/g, ''))
       if (''.match(rkey)) return undefined
       var candidates = Object.keys(object).filter(function(c) {
         return c.match(rkey)

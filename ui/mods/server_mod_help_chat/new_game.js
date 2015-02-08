@@ -7,7 +7,7 @@ console.log('help chat');
 })()
 
 require([
-  'server_mod_help_chat/info',
-  'server_mod_help_chat/new_game_public_bot'
-], function(info) {
+  'server_mod_help_chat/new_game_public_bot',
+  'server_mod_help_chat/new_game_local_bot',
+], function() {
 })
