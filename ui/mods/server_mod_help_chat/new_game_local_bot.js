@@ -11,7 +11,7 @@ define([
     model.chatMessages.push({
       username: ko.observable('smhc'),
       type: 'server',
-      payload: ko.observable(message),
+      payload: ko.observable('smhc: ' + message),
     })
   }
 

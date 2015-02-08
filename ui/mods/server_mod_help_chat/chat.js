@@ -4,7 +4,7 @@ define(function() {
   }
 
   var enabledFilter = function(payload) {
-    return !this.enabled
+    return !this.enabled()
   }
 
   var knownCommand = function(payload) {
@@ -37,7 +37,7 @@ define(function() {
       }
     },
     prefix: '!',
-    enabled: true,
+    enabled: function() {return true},
     listeners: [enabledFilter, knownCommand, unknownCommand],
     lookup: function(object, key) {
       key = key.toLowerCase()
