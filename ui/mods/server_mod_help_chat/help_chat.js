@@ -7,6 +7,7 @@ define(['server_mod_help_chat/chat'], function(Bot) {
   var hearTopic = function(payload) {
     if (payload.message[0] == '?') {
       var topic = payload.message.substr(1)
+      if (topic.length < 1) return false
       var text = this.lookup(this.topics(), topic)
       if (text) {
         this.say(text)

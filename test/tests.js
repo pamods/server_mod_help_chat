@@ -17,6 +17,12 @@ require({baseUrl: '../ui/mods'}, [
     this.messages.push(message)
   }
   var bot = new Bot()
+  bot.topics = function() {
+    return {
+      'one': '1',
+      'two': '2',
+    }
+  }
   QUnit.test( "simple string", function( assert ) {
     bot.messages = []
     assert.equal(bot.lookup({'key': 'value'}, 'key'), 'value')
@@ -46,5 +52,20 @@ require({baseUrl: '../ui/mods'}, [
     bot.messages = []
     assert.equal(bot.lookup({'key': 'value'}, '^^^'), undefined)
     assert.equal(bot.messages.length, 0)
+  });
+  QUnit.test( "!commands", function( assert ) {
+    bot.messages = []
+    bot.hear({message: '!commands'})
+    assert.ok(bot.messages[0].match('commands are'))
+  });
+  QUnit.test( "topic", function( assert ) {
+    bot.messages = []
+    bot.hear({message: '?one'})
+    assert.deepEqual(bot.messages, ['1'])
+  });
+  QUnit.test( "empty topic", function( assert ) {
+    bot.messages = []
+    bot.hear({message: '?'})
+    assert.deepEqual(bot.messages, [])
   });
 });
