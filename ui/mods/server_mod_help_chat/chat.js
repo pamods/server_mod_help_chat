@@ -1,5 +1,7 @@
 define(function() {
-  var Bot = function() {}
+  var Bot = function() {
+    this.listeners = [].concat(this.listeners)
+  }
 
   var enabledFilter = function(payload) {
     return !this.enabled
