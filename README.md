@@ -1,8 +1,14 @@
 # Server Mod Help Chat
 
-Offer help on server mods via a chat bot.  Chat is available in the game lobby and in game.  In the lobby, it will greet new players in order tell them about the !topics command.
+Offer help on server mods via a chat bot.  Chat is available in the game lobby and in game.  When enabled in the lobby, it will greet new players in order tell them about the !topics command.  Public chat is disabled by default, except for the host in the lobby.
 
-## Chat Commands
+## Local Chat Commands
+
+- `/commands`: list local commands
+- `/on`: enable public chat
+- `/off`: disable public chat
+
+## Public Chat Commands
 
 - `!commands`: list commands
 - `!topics`: list topics

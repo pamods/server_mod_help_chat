@@ -1,7 +1,11 @@
 ## 1.1.0
 
+- Fix forum url
 - Removed some cases where the bot accidentally spoke
 - Extracted post to chat from core chat module
+- Chatbots can be disabled
+- Local commands to control public chat: /on /off
+- Public chat is disabled by default, except for the host in the lobby
 
 ## 1.0.0
 
