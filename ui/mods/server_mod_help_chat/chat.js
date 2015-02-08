@@ -41,6 +41,7 @@ define(function() {
         return object[key]
       }
 
+      if (key.length < 1) return undefined
       var candidates = Object.keys(object).filter(function(c) {
         return c.startsWith(key)
       })
@@ -51,7 +52,8 @@ define(function() {
         return undefined
       }
 
-      var rkey = new RegExp(key.replace(/[\?\.\*]/g, ''))
+      var rkey = new RegExp(key.replace(/[^\w\s]/g, ''))
+      if (''.match(rkey)) return undefined
       var candidates = Object.keys(object).filter(function(c) {
         return c.match(rkey)
       })
