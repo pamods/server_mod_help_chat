@@ -1,6 +1,7 @@
-## 1.1.1
+## 1.2.0
 
 - Fix issue with jQuery auto-parsing json
+- Remove legacy support for `server_mod_help.json`
 
 ## 1.1.0
 
@@ -17,7 +18,7 @@
 
 ## 0.3.0
 
-- Interim version supports both mod_help.json and server_mod_help.json. server_mod_help will be removed in next version
+- Interim version supports both `mod_help.json` and `server_mod_help.json`. `server_mod_help` will be removed in next version
 - Matching is case-insensitive
 - If a mod provides no topics, a default is provided with the mod description
 - More general substring matching
