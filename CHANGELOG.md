@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Fix issue with jQuery auto-parsing json
+
 ## 1.1.0
 
 - Fix forum url

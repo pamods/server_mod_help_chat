@@ -59,6 +59,7 @@ define(function() {
     var notFound = function() {addTopics(defaultTopic(mod))}
     $.ajax({
       url: url,
+      dataType: 'text',
       success: record(mod, notFound),
       error: failure(notFound)
     });
