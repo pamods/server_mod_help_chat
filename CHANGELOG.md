@@ -1,3 +1,7 @@
+## 1.2.1
+
+- Bump build number for titans
+
 ## 1.2.0
 
 - Fix issue with jQuery auto-parsing json
