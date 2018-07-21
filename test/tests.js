@@ -38,6 +38,11 @@ require({baseUrl: '../ui/mods'}, [
     assert.equal(bot.lookup({'key': 'value'}, 'k'), 'value')
     assert.equal(bot.messages.length, 0)
   });
+  QUnit.test( "not too overzealous partial match", function( assert ) {
+    bot.messages = []
+    assert.equal(bot.lookup({'!dance': 'value'}, ':d'), undefined)
+    assert.equal(bot.messages.length, 0)
+  });
   QUnit.test( "candidate match", function( assert ) {
     bot.messages = []
     assert.equal(bot.lookup({'key': 'value', 'key2': 'value2'}, 'k'), undefined)
@@ -66,6 +71,11 @@ require({baseUrl: '../ui/mods'}, [
   QUnit.test( "topic", function( assert ) {
     bot.messages = []
     bot.hear({message: '?one'})
+    assert.deepEqual(bot.messages, ['1'])
+  });
+  QUnit.test( "topic substring", function( assert ) {
+    bot.messages = []
+    bot.hear({message: '?o'})
     assert.deepEqual(bot.messages, ['1'])
   });
   QUnit.test( "empty topic", function( assert ) {
