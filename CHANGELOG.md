@@ -1,3 +1,11 @@
+# Server Mod Help Chat
+
+## 1.2.2
+
+- Arbitrary substring match was too zealous for regular commands. Now used only on help topics. e.g.
+  - `:-D` will not run `!commands` by matching `d` (prefix should still be usable `!com`)
+  - `?combat` should still match `extreme energy combat`
+
 ## 1.2.1
 
 - Bump build number for titans
